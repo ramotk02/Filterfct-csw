@@ -71,9 +71,17 @@ namespace PhotoEditor
             editableImage.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
             DisplayedImage.Source = editableImage;
 
-
-
         }
 
+        private void RGB_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (CurrentImage == null) return;
+
+            ApplyRGB(
+                (byte)RedSlider.Value,
+                (byte)GreenSlider.Value,
+                (byte)BlueSlider.Value
+            );
+        }
     }
 }
